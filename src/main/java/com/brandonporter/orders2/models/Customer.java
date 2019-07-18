@@ -38,7 +38,7 @@ public class Customer {
     public Customer() {
     }
 
-    public Customer(String name, String custcity, String workingarea, String custcountry, String grade, String phone, double openingamt, double recieveamt, double paymentamt, double outstandingamt, Agent agent) {
+    public Customer(String name, String custcity, String workingarea, String custcountry, String grade,  double openingamt, double recieveamt, double paymentamt, double outstandingamt,String phone, Agent agent) {
         this.name = name;
         this.custcity = custcity;
         this.workingarea = workingarea;

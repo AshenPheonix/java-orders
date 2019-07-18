@@ -25,7 +25,7 @@ public class Agent {
     public Agent() {
     }
 
-    public Agent(String agentname, String workingarea, String phone, String country, double commission) {
+    public Agent(String agentname, String workingarea, double commission, String phone, String country) {
         this.agentname = agentname;
         this.workingarea = workingarea;
         this.phone = phone;
