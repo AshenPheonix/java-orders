@@ -1,16 +1,16 @@
 package com.brandonporter.orders2.models;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
-import java.util.concurrent.atomic.AtomicLong;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
-@Table(name="Agents")
-public class Agents {
-    private static AtomicLong counter=new AtomicLong(1);
+@Table(name = "Agent")
+public class Agent {
 
-
-    private final long agentCode;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long agentcode;
 
     private String  agentname,
                     workingarea,
@@ -19,19 +19,26 @@ public class Agents {
 
     private double commission;
 
-    public Agents(String agentname, String workingarea, String phone, String country, double commission) {
+    @OneToMany(mappedBy = "agent")
+    private List<Customer> customers=new ArrayList<>();
+
+    public Agent() {
+    }
+
+    public Agent(String agentname, String workingarea, String phone, String country, double commission) {
         this.agentname = agentname;
         this.workingarea = workingarea;
         this.phone = phone;
         this.country = country;
         this.commission = commission;
-
-        agentCode=counter.longValue();
-        counter.incrementAndGet();
     }
 
-    public long getAgentCode() {
-        return agentCode;
+    public long getAgentcode() {
+        return agentcode;
+    }
+
+    public void setAgentcode(long agentcode) {
+        this.agentcode = agentcode;
     }
 
     public String getAgentname() {
@@ -72,5 +79,13 @@ public class Agents {
 
     public void setCommission(double commission) {
         this.commission = commission;
+    }
+
+    public List<Customer> getCustomers() {
+        return customers;
+    }
+
+    public void setCustomers(List<Customer> customers) {
+        this.customers = customers;
     }
 }
